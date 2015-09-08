@@ -6,18 +6,73 @@
 //  Copyright (c) 2015年 EverManga Studio. All rights reserved.
 //
 
+#import <RestKit/RestKit.h>
+#import "MangaBrief.h"
+#import "MangaConfig.h"
 #import "AppDelegate.h"
 
 @interface AppDelegate ()
+
+@property (strong, nonatomic) UIView *launchView;
 
 @end
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+
+    NSURL *baseUrl = [NSURL URLWithString:@"http://api.mangabull.com/v1/"];
+    AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:baseUrl];
+    RKObjectManager *objectManager = [[RKObjectManager alloc] initWithHTTPClient:client];
+
+    // configs mapping
+    RKObjectMapping *mangaConfigMapping = [RKObjectMapping mappingForClass:[MangaConfig class]];
+    [mangaConfigMapping addAttributeMappingsFromDictionary:
+     @{
+        @"cover_url"        : @"coverUrl",
+        @"chapter_page_url" : @"chapterPageUrl"
+       }];
+    [objectManager addResponseDescriptor:
+     [RKResponseDescriptor
+        responseDescriptorWithMapping: mangaConfigMapping
+        method: RKRequestMethodGET
+        pathPattern: @"configs"
+        keyPath: nil
+        statusCodes: [NSIndexSet indexSetWithIndex:200]
+      ]];
+    
+    // mangas mapping
+    RKObjectMapping *mangaBriefMapping = [RKObjectMapping mappingForClass:[MangaBrief class]];
+    [mangaBriefMapping addAttributeMappingsFromDictionary:
+     @{
+       @"id"    : @"id",
+       @"nme"   : @"name",
+       @"slg"   : @"slug",
+       @"rnk"   : @"ranking"
+       }];
+    [objectManager addResponseDescriptor:
+     [RKResponseDescriptor
+      responseDescriptorWithMapping: mangaBriefMapping
+      method: RKRequestMethodGET
+      pathPattern: @"mangas"
+      keyPath: nil
+      statusCodes: [NSIndexSet indexSetWithIndex:200]
+      ]];
+    
+    self.launchView = [[NSBundle mainBundle ]loadNibNamed:@"LaunchScreen" owner:nil options:nil][0];
+    self.launchView.frame = CGRectMake(0, 0, self.window.screen.bounds.size.width, self.window.screen.bounds.size.height);
+    [self.window makeKeyAndVisible];
+    [self.window addSubview:self.launchView];
+    [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(removeLaunchView) userInfo:nil repeats:NO];
+    
     return YES;
+}
+
+-(void)removeLaunchView
+{
+    [self.launchView removeFromSuperview];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

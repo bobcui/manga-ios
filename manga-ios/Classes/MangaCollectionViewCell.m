@@ -7,15 +7,31 @@
 //
 
 #import "MangaCollectionViewCell.h"
-#import "Manga.h"
+#import "MangaBrief.h"
+
+
+@interface MangaCollectionViewCell ()
+
+@property (nonatomic, weak) IBOutlet UIImageView * coverImageView;
+@property (nonatomic, weak) IBOutlet UILabel * nameLabel;
+@property (nonatomic, weak) IBOutlet UILabel * authorLabel;
+
+@end
+
 
 @implementation MangaCollectionViewCell
 
 @synthesize manga = _manga;
 
-- (void)setManga:(Manga *)manga {
+- (void)setManga:(MangaBrief *)manga {
+    if (_manga) {
+        return;
+    }
+    
     _manga = manga;
-    self.mangaCoverImageView.image = [UIImage imageNamed:_manga.cover];
+    
+    self.coverImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:_manga.coverImageUrl]]];
+    self.nameLabel.text = _manga.name;
 }
 
 @end

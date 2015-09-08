@@ -7,7 +7,19 @@
 //
 
 #import "MangaBrief.h"
+#import "MangaConfig.h"
 
 @implementation MangaBrief
+
+- (NSString *)slug {
+    return [[[self.name stringByReplacingOccurrencesOfString:@" " withString:@"-"]
+                stringByReplacingOccurrencesOfString:@":" withString:@""]
+                lowercaseString
+            ];
+}
+
+- (NSString *)coverImageUrl {
+    return [[MangaConfig sharedInstance].coverUrl stringByReplacingOccurrencesOfString:@"{manga-slug}" withString:self.slug];
+}
 
 @end

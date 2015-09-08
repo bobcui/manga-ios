@@ -8,11 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class Manga;
+@class MangaBrief;
 
 @interface MangaCollectionViewCell : UICollectionViewCell
 
-@property (nonatomic) Manga * manga;
-@property IBOutlet UIImageView * mangaCoverImageView;
+@property (nonatomic) MangaBrief * manga;
 
 @end

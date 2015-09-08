@@ -10,4 +10,14 @@
 
 @implementation MangaConfig
 
+static  MangaConfig *instance = nil;
+
++ (MangaConfig *)sharedInstance {
+    return instance;
+}
+
++ (void)sharedInstance:(MangaConfig *)instance_ {
+    instance = instance_;
+}
+
 @end

@@ -10,4 +10,10 @@
 
 @interface MangaConfig : NSObject
 
++ (MangaConfig *)sharedInstance;
++ (void)sharedInstance:(MangaConfig *)instance;
+
+@property (nonatomic, copy) NSString *coverUrl;
+@property (nonatomic, copy) NSString *chapterPageUrl;
+
 @end

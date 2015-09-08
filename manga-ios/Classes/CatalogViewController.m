@@ -6,14 +6,14 @@
 //  Copyright (c) 2015年 EverManga Studio. All rights reserved.
 //
 
+#import <RestKit/RestKit.h>
 #import "CatalogViewController.h"
 #import "MangaCollectionViewCell.h"
-#import "Manga.h"
 
 @interface CatalogViewController ()
 
 @property (nonatomic, weak) IBOutlet UICollectionView * mangaCollectionView;
-@property NSMutableArray * mangas;
+@property (nonatomic) NSMutableArray * mangas;
 
 @end
 
@@ -21,18 +21,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    if (self.mangas == nil) {
-        self.mangas = [[NSMutableArray alloc] init];
-        for (NSInteger i = 0; i < 100; ++i) {
-            [self.mangas addObject:[[Manga alloc] init]];
-        }
-    }
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)didMoveToParentViewController:(UIViewController *)parent {
+    [super didMoveToParentViewController:parent];
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -47,6 +49,22 @@
     
     cell.manga = self.mangas[indexPath.item];
     return cell;
+}
+
+- (void)loadMangas {
+    RKObjectManager *objectManager = [RKObjectManager sharedManager];
+    [objectManager
+     getObjectsAtPath: @"mangas"
+     parameters: nil
+     success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+         self.mangas = [mappingResult array];
+         if(self.isViewLoaded) {
+             [self.mangaCollectionView reloadData];
+         }
+     }
+     failure:^(RKObjectRequestOperation *operation, NSError *error) {
+         NSLog(@"Failed with error: %@", [error localizedDescription]);
+     }];
 }
 
 @end

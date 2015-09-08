@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TabBarController : UITabBarController
+@interface MangaTabBarController : UITabBarController
 
 @end
