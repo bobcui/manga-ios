@@ -16,8 +16,6 @@
 		C49DEED81B95896E007935D9 /* manga_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C49DEED71B95896E007935D9 /* manga_iosTests.m */; };
 		C49DEEF81B958B52007935D9 /* CatalogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C49DEEF11B958B52007935D9 /* CatalogViewController.m */; };
 		C49DEEFA1B958B52007935D9 /* MangaCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C49DEEF51B958B52007935D9 /* MangaCollectionViewCell.m */; };
-		C49DEEFF1B958BCF007935D9 /* one-piece_144x0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C49DEEFD1B958BCF007935D9 /* one-piece_144x0.jpg */; };
-		C49DEF001B958BCF007935D9 /* one-piece_62x88.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C49DEEFE1B958BCF007935D9 /* one-piece_62x88.jpg */; };
 		C4B49DE81B96E0920043F034 /* MangaBrief.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B49DE71B96E0920043F034 /* MangaBrief.m */; };
 		C4B49DEB1B96E2AA0043F034 /* MangaConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B49DEA1B96E2AA0043F034 /* MangaConfig.m */; };
 		C4E5F22B1B9DF492007EE7CD /* MangaTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E5F22A1B9DF492007EE7CD /* MangaTabBarController.m */; };
@@ -52,8 +50,6 @@
 		C49DEEF11B958B52007935D9 /* CatalogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatalogViewController.m; sourceTree = "<group>"; };
 		C49DEEF41B958B52007935D9 /* MangaCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MangaCollectionViewCell.h; sourceTree = "<group>"; };
 		C49DEEF51B958B52007935D9 /* MangaCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MangaCollectionViewCell.m; sourceTree = "<group>"; };
-		C49DEEFD1B958BCF007935D9 /* one-piece_144x0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "one-piece_144x0.jpg"; sourceTree = "<group>"; };
-		C49DEEFE1B958BCF007935D9 /* one-piece_62x88.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "one-piece_62x88.jpg"; sourceTree = "<group>"; };
 		C4B49DE61B96E0920043F034 /* MangaBrief.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MangaBrief.h; sourceTree = "<group>"; };
 		C4B49DE71B96E0920043F034 /* MangaBrief.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MangaBrief.m; sourceTree = "<group>"; };
 		C4B49DE91B96E2AA0043F034 /* MangaConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MangaConfig.h; sourceTree = "<group>"; };
@@ -171,8 +167,6 @@
 		C49DEEFC1B958BCF007935D9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				C49DEEFD1B958BCF007935D9 /* one-piece_144x0.jpg */,
-				C49DEEFE1B958BCF007935D9 /* one-piece_62x88.jpg */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -268,10 +262,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C49DEEC71B95896E007935D9 /* Main.storyboard in Resources */,
-				C49DEF001B958BCF007935D9 /* one-piece_62x88.jpg in Resources */,
 				C49DEECC1B95896E007935D9 /* LaunchScreen.xib in Resources */,
 				C49DEEC91B95896E007935D9 /* Images.xcassets in Resources */,
-				C49DEEFF1B958BCF007935D9 /* one-piece_144x0.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
