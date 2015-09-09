@@ -6,15 +6,16 @@
 //  Copyright (c) 2015年 EverManga Studio. All rights reserved.
 //
 
+#import <DFImageManager/DFImageManagerKit.h>
 #import "MangaCollectionViewCell.h"
 #import "MangaBrief.h"
 
 
 @interface MangaCollectionViewCell ()
 
-@property (nonatomic, weak) IBOutlet UIImageView * coverImageView;
-@property (nonatomic, weak) IBOutlet UILabel * nameLabel;
-@property (nonatomic, weak) IBOutlet UILabel * authorLabel;
+@property (nonatomic, weak) IBOutlet DFImageView *coverImageView;
+@property (nonatomic, weak) IBOutlet UILabel *nameLabel;
+@property (nonatomic, weak) IBOutlet UILabel *authorLabel;
 
 @end
 
@@ -24,14 +25,12 @@
 @synthesize manga = _manga;
 
 - (void)setManga:(MangaBrief *)manga {
-    if (_manga) {
-        return;
-    }
-    
     _manga = manga;
+
+    [_coverImageView prepareForReuse];
+    [_coverImageView setImageWithResource:[NSURL URLWithString:_manga.coverImageUrl]];
     
-    self.coverImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:_manga.coverImageUrl]]];
-    self.nameLabel.text = _manga.name;
+    _nameLabel.text = _manga.name;
 }
 
 @end

@@ -11,15 +11,8 @@
 
 @implementation MangaBrief
 
-- (NSString *)slug {
-    return [[[self.name stringByReplacingOccurrencesOfString:@" " withString:@"-"]
-                stringByReplacingOccurrencesOfString:@":" withString:@""]
-                lowercaseString
-            ];
-}
-
 - (NSString *)coverImageUrl {
-    return [[MangaConfig sharedInstance].coverUrl stringByReplacingOccurrencesOfString:@"{manga-slug}" withString:self.slug];
+    return [[MangaConfig sharedInstance].coverUrl stringByReplacingOccurrencesOfString:@"{manga-slug}" withString:_slug];
 }
 
 @end

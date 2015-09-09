@@ -65,7 +65,7 @@
     self.launchView.frame = CGRectMake(0, 0, self.window.screen.bounds.size.width, self.window.screen.bounds.size.height);
     [self.window makeKeyAndVisible];
     [self.window addSubview:self.launchView];
-    [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(removeLaunchView) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(removeLaunchView) userInfo:nil repeats:NO];
     
     return YES;
 }

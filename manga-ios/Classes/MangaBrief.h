@@ -13,7 +13,7 @@
 @property (nonatomic, copy) NSNumber *id;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSNumber *ranking;
-@property (nonatomic, readonly) NSString *slug;
+@property (nonatomic, copy) NSString *slug;
 @property (nonatomic, readonly) NSString *coverImageUrl;
 
 @end
