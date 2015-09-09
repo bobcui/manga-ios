@@ -9,7 +9,7 @@
 #import <RestKit/RestKit.h>
 #import "MangaTabBarController.h"
 #import "MangaConfig.h"
-#import "CatalogViewController.h"
+#import "CatalogNavigationController.h"
 
 @interface MangaTabBarController ()
 
@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self loadData];
+    [self initData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,7 +35,7 @@
     return self.isConfigLoaded && self.isCategoryLoaded;
 }
 
-- (void)loadData {
+- (void)initData {
     [self loadCategory];
     [self loadConfig];
 }
@@ -61,8 +61,8 @@
 
 - (void)next {
     if ([self isDataLoaded] == true) {
-        if ([self.selectedViewController isKindOfClass:[CatalogViewController class]]) {
-            [(CatalogViewController *)self.selectedViewController loadMangas];
+        if ([self.selectedViewController isKindOfClass:[CatalogNavigationController class]]) {
+            [(CatalogNavigationController *)self.selectedViewController initData];
         }
     }
 }

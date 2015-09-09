@@ -1,14 +1,14 @@
 //
-//  CatalogViewController.h
+//  CatalogNavigationController.h
 //  manga-ios
 //
-//  Created by bob on 15/8/31.
+//  Created by bob on 15/9/9.
 //  Copyright (c) 2015年 EverManga Studio. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface CatalogViewController : UIViewController
+@interface CatalogNavigationController : UINavigationController
 
 - (void)initData;
 

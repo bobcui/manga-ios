@@ -10,7 +10,7 @@
 #import "CatalogViewController.h"
 #import "MangaCollectionViewCell.h"
 
-@interface CatalogViewController ()
+@interface CatalogViewController () <UICollectionViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UICollectionView * mangaCollectionView;
 @property (nonatomic) NSMutableArray * mangas;
@@ -21,6 +21,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+}
+
+- (void)initData {
+    [self loadMangas];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -35,6 +39,10 @@
     
     cell.manga = self.mangas[indexPath.item];
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"%ld selected", indexPath.item);
 }
 
 - (void)loadMangas {
